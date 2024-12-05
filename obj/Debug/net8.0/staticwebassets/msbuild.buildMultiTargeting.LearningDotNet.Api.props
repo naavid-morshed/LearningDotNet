@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/LearningDotNet.Api.props" />
+</Project>
