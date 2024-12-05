@@ -3,4 +3,18 @@
 3. [Required][StringLength(50)] string Name [these are class annotations like springboot]
 4. MinimalApis.Extensions in Nuget Packages [add WithParameterValidation() after methods to make sure point (3) 
    is applied during requests]
-5. 
+
+   Example => group.MapPost("/", (CreateGameDto newGame) =>
+        {
+            GameDto game = new(
+                games.Count + 1,
+                newGame.Name,
+                newGame.Genre,
+                newGame.Price,
+                newGame.ReleaseDate
+            );
+
+            games.Add(game);
+
+            return Results.CreatedAtRoute(GetGameEndPointName, new { id = game.Id }, game);
+        }).WithParameterValidation(); // this is required to make this package work, it can also be added to group at class level
