@@ -24,3 +24,29 @@
 /home/naavidmorshed/dotnetProjects/LearningDotNet/obj/Debug/net8.0/LearningDotNet.pdb
 /home/naavidmorshed/dotnetProjects/LearningDotNet/obj/Debug/net8.0/LearningDotNet.genruntimeconfig.cache
 /home/naavidmorshed/dotnetProjects/LearningDotNet/obj/Debug/net8.0/ref/LearningDotNet.dll
+/Users/naavidmorshed/Web Development/LearningDotNet/bin/Debug/net8.0/appsettings.Development.json
+/Users/naavidmorshed/Web Development/LearningDotNet/bin/Debug/net8.0/appsettings.json
+/Users/naavidmorshed/Web Development/LearningDotNet/bin/Debug/net8.0/LearningDotNet
+/Users/naavidmorshed/Web Development/LearningDotNet/bin/Debug/net8.0/LearningDotNet.deps.json
+/Users/naavidmorshed/Web Development/LearningDotNet/bin/Debug/net8.0/LearningDotNet.runtimeconfig.json
+/Users/naavidmorshed/Web Development/LearningDotNet/bin/Debug/net8.0/LearningDotNet.dll
+/Users/naavidmorshed/Web Development/LearningDotNet/bin/Debug/net8.0/LearningDotNet.pdb
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/LearningDotNet.GeneratedMSBuildEditorConfig.editorconfig
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/LearningDotNet.AssemblyInfoInputs.cache
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/LearningDotNet.AssemblyInfo.cs
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/LearningDotNet.csproj.CoreCompileInputs.cache
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/LearningDotNet.MvcApplicationPartsAssemblyInfo.cache
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/LearningDotNet.sourcelink.json
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/staticwebassets.build.json
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/staticwebassets.development.json
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/staticwebassets/msbuild.LearningDotNet.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/staticwebassets/msbuild.build.LearningDotNet.props
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.LearningDotNet.props
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.LearningDotNet.props
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/staticwebassets.pack.json
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/scopedcss/bundle/LearningDotNet.styles.css
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/LearningDotNet.dll
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/refint/LearningDotNet.dll
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/LearningDotNet.pdb
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/LearningDotNet.genruntimeconfig.cache
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/ref/LearningDotNet.dll
