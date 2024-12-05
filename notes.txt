@@ -1,0 +1,3 @@
+1. In EndPoints, method can return WebApplication obj or RouteGroupBuilder obj.	
+2. RouteGroupBuilder? group is used to defined a set of related routes
+3. 
