@@ -50,3 +50,9 @@
 /Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/LearningDotNet.pdb
 /Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/LearningDotNet.genruntimeconfig.cache
 /Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/ref/LearningDotNet.dll
+/Users/naavidmorshed/Web Development/LearningDotNet/bin/Debug/net8.0/Microsoft.OpenApi.dll
+/Users/naavidmorshed/Web Development/LearningDotNet/bin/Debug/net8.0/MinimalApis.Extensions.dll
+/Users/naavidmorshed/Web Development/LearningDotNet/bin/Debug/net8.0/MiniValidation.dll
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/LearningDotNet.csproj.AssemblyReference.cache
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/LearningDotNet.MvcApplicationPartsAssemblyInfo.cs
+/Users/naavidmorshed/Web Development/LearningDotNet/obj/Debug/net8.0/Learning.345FA8FB.Up2Date

@@ -1,3 +1,6 @@
 1. In EndPoints, method can return WebApplication obj or RouteGroupBuilder obj.	
 2. RouteGroupBuilder? group is used to defined a set of related routes
-3. 
+3. [Required][StringLength(50)] string Name [these are class annotations like springboot]
+4. MinimalApis.Extensions in Nuget Packages [add WithParameterValidation() after methods to make sure point (3) 
+   is applied during requests]
+5. 
