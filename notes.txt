@@ -29,3 +29,6 @@
 7. dotnet ef migrations add InitialCreate --output-dir Data/Migrations [will create runnable file to create/update/downgrade/remove database
                                                                         based on DbContext]
 8. dotnet ef database update [updates/creates database]
+9. public static class DataExtensions [ check this class in Data folder, it is used to migrate db after each new run]
+   [use app.MigrateDb() in Program.cs file to migrate db before running app]
+10. 
