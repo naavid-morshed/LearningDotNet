@@ -31,4 +31,12 @@
 8. dotnet ef database update [updates/creates database]
 9. public static class DataExtensions [ check this class in Data folder, it is used to migrate db after each new run]
    [use app.MigrateDb() in Program.cs file to migrate db before running app]
-10. 
+10. IServiceProvider [registers and manages dependancy accross the app]
+11. Three available service lifetime =>
+    a) SingleTon [SingleTon lifetime services are created once and keep getting used until app shuts down]
+    b) Transient (For lightweight stateless services, will create instance everytime a class needs this dependancy)
+       [Transient lifetime services are created each time they are requested from the service container (IServiceProvide)]
+    c) Scoped (if class keeps track of state that needs to be shared accross multiple classes)
+       [different instances for different HTTP requests]
+       [Scoped lifetime services are created once per HTTP requests and reused within that request]
+12.

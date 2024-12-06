@@ -3,7 +3,7 @@
 GET http://localhost:5253/games
 
 ###
-GET http://localhost:5253/games/6
+GET http://localhost:5253/games/2
 
 ###
 POST http://localhost:5253/games
@@ -11,22 +11,22 @@ Content-Type: application/json
 
 {
     "name": "Black Myth Wukong",
-    "genre": "Action RPG",
+    "genreId": 1,
     "price": 59.99,
     "releaseDate": "2024-11-18"
 }
 
 
 ###
-PUT http://localhost:5253/games/6
+PUT http://localhost:5253/games/2
 Content-Type: application/json
 
 {
-    "name": "Black Myth Wukong",
-    "genre": "Action RPG",
-    "price": 159.99,
+    "name": "Black Myth Bong",
+    "genreId": "1",
+    "price": 2.99,
     "releaseDate": "2024-11-18"
 }
 
 ###
-DELETE http://localhost:5253/games/3
+DELETE http://localhost:5253/games/2
