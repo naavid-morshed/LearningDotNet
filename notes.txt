@@ -39,4 +39,67 @@
     c) Scoped (if class keeps track of state that needs to be shared accross multiple classes)
        [different instances for different HTTP requests]
        [Scoped lifetime services are created once per HTTP requests and reused within that request]
-12.
+
+12. GET method:
+    group.MapGet(
+            "",
+            (GameStoreContext dbContext) =>
+                dbContext
+                    .Games.Include(game => game.Genre) // Games will only return GenreId, not Genre objects, that's why include needed
+                    .Select(game => game.ToGameSummaryDto())
+                    .AsNoTracking() // makes sure framework doesn't keep track of these objects as it is simply a get operation
+    );
+
+13. POST method:
+    group.MapPost(
+            "",
+            (CreateGameDto newGame, GameStoreContext dbContext) =>
+            {
+                Game game = newGame.ToEntity();
+                // game.Genre = dbContext.Genres.Find(newGame.GenreId); this is done by ef itself,
+                // this line is only needed if genre object is needed in code block
+
+                dbContext.Games.Add(game);
+                // dbContext.Add(game); this works too
+                dbContext.SaveChanges();
+
+                return Results.CreatedAtRoute(
+                    GetGameEndPointName,
+                    new { id = game.Id },
+                    game.ToGameDetailsDto()
+                );
+            }
+        );
+
+14. PUT method:
+    group.MapPut(
+            "{id}",
+            (int id, UpdateGameDto updateGameDto, GameStoreContext dbContext) =>
+            {
+                var game = dbContext.Games.Find(id);
+
+                if (game is null)
+                {
+                    return Results.NotFound();
+                }
+
+                dbContext.Entry(game).CurrentValues.SetValues(updateGameDto.ToEntity(id));
+                dbContext.SaveChanges();
+
+                // return Results.NoContent();
+                return Results.CreatedAtRoute(
+                    GetGameEndPointName,
+                    new { id = id },
+                    game.ToGameDetailsDto()
+                );
+            }
+        );
+
+15. DELETE method:
+    group.MapDelete(
+            "{id}",
+            (int id, GameStoreContext dbContext) =>
+                dbContext.Games.Where(game => game.Id == id).ExecuteDelete()
+        );
+
+16. 
