@@ -30,7 +30,7 @@ public static class GamesEndPoints
 
         group.MapPost("", (CreateGameDto newGame) =>
         {
-            // if (string.IsNullOrEmpty(newGame.Name))
+            // if (string.IsNullOrEmpty(newGame.Name)) // another way of validation
             // {
             //     return Results.BadRequest("Name is required");
             // }
