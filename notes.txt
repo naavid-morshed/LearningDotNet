@@ -23,4 +23,9 @@
         }).WithParameterValidation(); // this is required to make this package work, it can also be added to group at class level
 
 5. Microsoft.EntityFrameworkCore.Sqlite [nuget package for using sqlite with dotnet]
-6. 
+6. Microsoft.EntityFrameworkCore.Design [The Entity Framework Core tools help with design-time development tasks. 
+                                         They're primarily used to manage Migrations and to scaffold a DbContext and 
+                                         entity types by reverse engineering the schema of a database.]
+7. dotnet ef migrations add InitialCreate --output-dir Data/Migrations [will create runnable file to create/update/downgrade/remove database
+                                                                        based on DbContext]
+8. dotnet ef database update [updates/creates database]
