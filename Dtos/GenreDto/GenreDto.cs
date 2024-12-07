@@ -1,12 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+namespace LearningDotNet.Dtos.GenreDto;
 
-namespace LearningDotNet.Dtos.GenreDto
-{
-    public class GenreDto
-    {
-        
-    }
-}
+public record class GenreDto(int Id, string Name);

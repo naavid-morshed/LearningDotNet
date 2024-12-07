@@ -9,6 +9,7 @@ builder.Services.AddSqlite<GameStoreContext>(connectionString); // this is regis
 var app = builder.Build();
 
 app.MapGamesEndpoints();
+app.MapGenresEndpoints();
 await app.MigrateDbAsync();
 
 app.Run();
