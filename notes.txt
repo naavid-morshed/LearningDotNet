@@ -102,4 +102,4 @@
                 dbContext.Games.Where(game => game.Id == id).ExecuteDelete()
         );
 
-16. 
+16. Learned Async await, check endpoints.cs, Program.cs and DataExtensions.cs for details.

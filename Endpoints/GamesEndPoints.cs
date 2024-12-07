@@ -8,7 +8,7 @@ namespace LearningDotNet.Endpoints;
 
 public static class GamesEndPoints
 {
-    const string GetGameEndPointName = "GetGame";
+    private const string GetGameEndPointName = "GetGame";
 
     public static RouteGroupBuilder MapGamesEndpoints(this WebApplication app)
     {
@@ -16,19 +16,21 @@ public static class GamesEndPoints
 
         group.MapGet(
             "",
-            (GameStoreContext dbContext) =>
-                dbContext
+            async (GameStoreContext dbContext) =>
+                await dbContext
                     .Games.Include(game => game.Genre) // Games will only return GenreId, not Genre objects, that's why include needed
                     .Select(game => game.ToGameSummaryDto())
                     .AsNoTracking() // makes sure framework doesn't keep track of these objects as it is simply a get operation
+                    .ToListAsync()
         );
 
         group
             .MapGet(
                 "{id}",
-                (int id, GameStoreContext dbContext) =>
+                async (int id, GameStoreContext dbContext) =>
                 {
-                    Game? game = dbContext.Games.Find(id);
+                    // Game? game = dbContext.Games.Find(id);
+                    Game? game = await dbContext.Games.FindAsync(id);
 
                     return game is null ? Results.NotFound() : Results.Ok(game.ToGameDetailsDto());
                 }
@@ -37,7 +39,7 @@ public static class GamesEndPoints
 
         group.MapPost(
             "",
-            (CreateGameDto newGame, GameStoreContext dbContext) =>
+            async (CreateGameDto newGame, GameStoreContext dbContext) =>
             {
                 Game game = newGame.ToEntity();
                 // game.Genre = dbContext.Genres.Find(newGame.GenreId); this is done by ef itself,
@@ -45,7 +47,8 @@ public static class GamesEndPoints
 
                 dbContext.Games.Add(game);
                 // dbContext.Add(game); this works too
-                dbContext.SaveChanges();
+                // dbContext.SaveChanges();
+                await dbContext.SaveChangesAsync();
 
                 return Results.CreatedAtRoute(
                     GetGameEndPointName,
@@ -57,9 +60,9 @@ public static class GamesEndPoints
 
         group.MapPut(
             "{id}",
-            (int id, UpdateGameDto updateGameDto, GameStoreContext dbContext) =>
+            async (int id, UpdateGameDto updateGameDto, GameStoreContext dbContext) =>
             {
-                var game = dbContext.Games.Find(id);
+                var game = await dbContext.Games.FindAsync(id);
 
                 if (game is null)
                 {
@@ -67,7 +70,7 @@ public static class GamesEndPoints
                 }
 
                 dbContext.Entry(game).CurrentValues.SetValues(updateGameDto.ToEntity(id));
-                dbContext.SaveChanges();
+                await dbContext.SaveChangesAsync();
 
                 // return Results.NoContent();
                 return Results.CreatedAtRoute(
@@ -80,8 +83,8 @@ public static class GamesEndPoints
 
         group.MapDelete(
             "{id}",
-            (int id, GameStoreContext dbContext) =>
-                dbContext.Games.Where(game => game.Id == id).ExecuteDelete()
+            async (int id, GameStoreContext dbContext) =>
+                await dbContext.Games.Where(game => game.Id == id).ExecuteDeleteAsync()
         );
 
         return group;
