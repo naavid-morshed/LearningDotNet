@@ -1,0 +1,105 @@
+1. In EndPoints, method can return WebApplication obj or RouteGroupBuilder obj.	
+2. RouteGroupBuilder? group is used to defined a set of related routes
+3. [Required][StringLength(50)] string Name [these are class annotations like springboot]
+4. MinimalApis.Extensions in Nuget Packages [add WithParameterValidation() after methods to make sure point (3) 
+   is applied during requests]
+
+   Example => 
+   var group = app.MapGroup("games").WithParameterValidation();
+   
+   group.MapPost("/", (CreateGameDto newGame) =>
+        {
+            GameDto game = new(
+                games.Count + 1,
+                newGame.Name,
+                newGame.Genre,
+                newGame.Price,
+                newGame.ReleaseDate
+            );
+
+            games.Add(game);
+
+            return Results.CreatedAtRoute(GetGameEndPointName, new { id = game.Id }, game);
+        }).WithParameterValidation(); // this is required to make this package work, it can also be added to group at class level
+
+5. Microsoft.EntityFrameworkCore.Sqlite [nuget package for using sqlite with dotnet]
+6. Microsoft.EntityFrameworkCore.Design [The Entity Framework Core tools help with design-time development tasks. 
+                                         They're primarily used to manage Migrations and to scaffold a DbContext and 
+                                         entity types by reverse engineering the schema of a database.]
+7. dotnet ef migrations add InitialCreate --output-dir Data/Migrations [will create runnable file to create/update/downgrade/remove database
+                                                                        based on DbContext]
+8. dotnet ef database update [updates/creates database]
+9. public static class DataExtensions [ check this class in Data folder, it is used to migrate db after each new run]
+   [use app.MigrateDb() in Program.cs file to migrate db before running app]
+10. IServiceProvider [registers and manages dependancy accross the app]
+11. Three available service lifetime =>
+    a) SingleTon [SingleTon lifetime services are created once and keep getting used until app shuts down]
+    b) Transient (For lightweight stateless services, will create instance everytime a class needs this dependancy)
+       [Transient lifetime services are created each time they are requested from the service container (IServiceProvide)]
+    c) Scoped (if class keeps track of state that needs to be shared accross multiple classes)
+       [different instances for different HTTP requests]
+       [Scoped lifetime services are created once per HTTP requests and reused within that request]
+
+12. GET method:
+    group.MapGet(
+            "",
+            (GameStoreContext dbContext) =>
+                dbContext
+                    .Games.Include(game => game.Genre) // Games will only return GenreId, not Genre objects, that's why include needed
+                    .Select(game => game.ToGameSummaryDto())
+                    .AsNoTracking() // makes sure framework doesn't keep track of these objects as it is simply a get operation
+    );
+
+13. POST method:
+    group.MapPost(
+            "",
+            (CreateGameDto newGame, GameStoreContext dbContext) =>
+            {
+                Game game = newGame.ToEntity();
+                // game.Genre = dbContext.Genres.Find(newGame.GenreId); this is done by ef itself,
+                // this line is only needed if genre object is needed in code block
+
+                dbContext.Games.Add(game);
+                // dbContext.Add(game); this works too
+                dbContext.SaveChanges();
+
+                return Results.CreatedAtRoute(
+                    GetGameEndPointName,
+                    new { id = game.Id },
+                    game.ToGameDetailsDto()
+                );
+            }
+        );
+
+14. PUT method:
+    group.MapPut(
+            "{id}",
+            (int id, UpdateGameDto updateGameDto, GameStoreContext dbContext) =>
+            {
+                var game = dbContext.Games.Find(id);
+
+                if (game is null)
+                {
+                    return Results.NotFound();
+                }
+
+                dbContext.Entry(game).CurrentValues.SetValues(updateGameDto.ToEntity(id));
+                dbContext.SaveChanges();
+
+                // return Results.NoContent();
+                return Results.CreatedAtRoute(
+                    GetGameEndPointName,
+                    new { id = id },
+                    game.ToGameDetailsDto()
+                );
+            }
+        );
+
+15. DELETE method:
+    group.MapDelete(
+            "{id}",
+            (int id, GameStoreContext dbContext) =>
+                dbContext.Games.Where(game => game.Id == id).ExecuteDelete()
+        );
+
+16. Learned Async await, check endpoints.cs, Program.cs and DataExtensions.cs for details.
