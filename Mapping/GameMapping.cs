@@ -12,10 +12,10 @@ public static class GameMapping
             Name = createGameDto.Name,
             GenreId = createGameDto.GenreId,
             Price = createGameDto.Price,
-            ReleaseDate = createGameDto.ReleaseDate
+            ReleaseDate = createGameDto.ReleaseDate,
         };
     }
-    
+
     public static Game ToEntity(this UpdateGameDto updateGameDto, int id)
     {
         return new()
@@ -24,29 +24,29 @@ public static class GameMapping
             Name = updateGameDto.Name,
             GenreId = updateGameDto.GenreId,
             Price = updateGameDto.Price,
-            ReleaseDate = updateGameDto.ReleaseDate
+            ReleaseDate = updateGameDto.ReleaseDate,
         };
     }
 
     public static GameSummaryDto ToGameSummaryDto(this Game game)
     {
         return new(
-                game.Id,
-                game.Name,
-                game.Genre!.Name, // (!) means genre will never be null
-                game.Price,
-                game.ReleaseDate
-            );
+            game.Id,
+            game.Name,
+            game.Genre!.Name, // (!) means genre will never be null
+            game.Price,
+            game.ReleaseDate
+        );
     }
 
     public static GameDetailsDto ToGameDetailsDto(this Game game)
     {
         return new(
-                game.Id,
-                game.Name,
-                game.GenreId, // (!) means genre will never be null
-                game.Price,
-                game.ReleaseDate
-            );
+            game.Id,
+            game.Name,
+            game.GenreId, // (!) means genre will never be null
+            game.Price,
+            game.ReleaseDate
+        );
     }
 }
