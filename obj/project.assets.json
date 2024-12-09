@@ -3291,19 +3291,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/naavidmorshed/.nuget/packages/": {}
+    "/home/naavidmorshed/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/naavidmorshed/Web Development/LearningDotNet/LearningDotNet.csproj",
+      "projectUniqueName": "/home/naavidmorshed/dotnetProjects/LearningDotNet/LearningDotNet.csproj",
       "projectName": "LearningDotNet",
-      "projectPath": "/Users/naavidmorshed/Web Development/LearningDotNet/LearningDotNet.csproj",
-      "packagesPath": "/Users/naavidmorshed/.nuget/packages/",
-      "outputPath": "/Users/naavidmorshed/Web Development/LearningDotNet/obj/",
+      "projectPath": "/home/naavidmorshed/dotnetProjects/LearningDotNet/LearningDotNet.csproj",
+      "packagesPath": "/home/naavidmorshed/.nuget/packages/",
+      "outputPath": "/home/naavidmorshed/dotnetProjects/LearningDotNet/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/naavidmorshed/.nuget/NuGet/NuGet.Config"
+        "/home/naavidmorshed/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -3366,7 +3366,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.404/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.404/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
